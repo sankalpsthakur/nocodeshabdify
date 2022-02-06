@@ -14,7 +14,7 @@ API_KEY= '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'
 
 import urllib
 from random import randint
-import torch
+#import torch
 #from transformers import pipeline, set_seed
 #from transformers.pipelines import TextGenerationPipeline
 import streamlit as st
@@ -45,7 +45,7 @@ def shabdify_suggest(text: str) -> str:
 
 
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def main():
     state = get_state()
