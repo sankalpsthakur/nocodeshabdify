@@ -1,6 +1,6 @@
 import urllib
 from random import randint
-import torch
+#import torch
 from transformers import pipeline, set_seed
 from transformers.pipelines import TextGenerationPipeline
 import streamlit as st
