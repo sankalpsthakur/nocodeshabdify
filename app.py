@@ -1,8 +1,9 @@
+!pip install streamlit
 import urllib
 from random import randint
 #import torch
-from transformers import pipeline, set_seed
-from transformers.pipelines import TextGenerationPipeline
+#from transformers import pipeline, set_seed
+#from transformers.pipelines import TextGenerationPipeline
 import streamlit as st
 from SessionState import _SessionState, _get_session, _get_state
 import logging
