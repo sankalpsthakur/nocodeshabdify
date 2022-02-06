@@ -2,7 +2,7 @@
 #!apt-get install python3.7
 #!pip install ipykernel
 #!pip install -q streamlit
-#!pip install openai
+!pip install openai
 API_KEY= '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'
 
 #!wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
