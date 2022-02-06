@@ -1,4 +1,17 @@
 !pip install streamlit
+!apt-get install python3.7
+!pip install ipykernel
+!pip install -q streamlit
+!pip install openai
+%env OPENAI_API_KEY=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
+
+!wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+!unzip ngrok-stable-linux-amd64.zip
+get_ipython().system_raw('./ngrok http 8501 &')
+
+!curl -s http://localhost:4040/api/tunnels | python3 -c \
+st.session_state
+
 import urllib
 from random import randint
 #import torch
