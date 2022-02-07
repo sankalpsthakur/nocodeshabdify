@@ -49,11 +49,11 @@ def shabdify_suggest(text: str) -> str:
 
 def main():
     state = get_state()
-    st.set_page_config(page_title="Story Generator", page_icon="🛸")
+    st.set_page_config(page_title="Mail Assistant", page_icon="📧")
 
     # set_seed(42)  # for reproducibility
-
-    load_page(state, model)
+   
+    load_page(state)
 
     state.sync()  # Mandatory to avoid rollbacks with widgets, must be called at the end of your app
 
