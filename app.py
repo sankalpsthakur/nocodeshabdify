@@ -2,7 +2,7 @@
 #!apt-get install python3.7
 #!pip install ipykernel
 #!pip install -q streamlit
-pip install openai
+#pip install openai
 API_KEY= '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'
 
 #!wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
@@ -18,10 +18,13 @@ from random import randint
 #from transformers import pipeline, set_seed
 #from transformers.pipelines import TextGenerationPipeline
 import streamlit as st
+
 from streamlit import session_state as session_state
+#from streamlit.session_state import get_state
+#from session_state import get_state 
 import logging
-import openai
-from session_state import get_state
+import openai as openai
+
 
 def shabdifyTextGeneratorUsingAda(textstr, noOfWords=1):
     openai.api_key=API_KEY
@@ -45,10 +48,11 @@ def shabdify_suggest(text: str) -> str:
 
 
 
+
 #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def main():
-    state = get_state()
+    state = st.session_state()
     st.set_page_config(page_title="Mail Assistant", page_icon="📧")
 
     # set_seed(42)  # for reproducibility
