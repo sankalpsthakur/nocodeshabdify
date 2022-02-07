@@ -52,7 +52,7 @@ def main():
     st.set_page_config(page_title="Mail Assistant", page_icon="📧")
 
     # set_seed(42)  # for reproducibility
-
+    model= shabdifyTextGeneratorUsingAda
     load_page(state, model)
 
     state.sync()  # Mandatory to avoid rollbacks with widgets, must be called at the end of your app
