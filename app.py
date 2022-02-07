@@ -19,14 +19,14 @@ from random import randint
 #from transformers.pipelines import TextGenerationPipeline
 import streamlit as st
 
-from streamlit import session_state as session_state
-#from streamlit.session_state import get_state
-#from session_state import get_state 
+
+from SessionState import _SessionState, _get_session, _get_state
+
 import logging
 import openai as openai
 
 
-def shabdifyTextGeneratorUsingAda(textstr, noOfWords=1):
+def shabdifyTextGeneratorUsingAda(textstr, noOfWords=5):
     openai.api_key=API_KEY
     response = openai.Completion.create(
       engine="ada",
@@ -52,7 +52,8 @@ def shabdify_suggest(text: str) -> str:
 #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def main():
-    state = st.session_state()
+
+    state = _get_state()
     st.set_page_config(page_title="Mail Assistant", page_icon="📧")
 
     # set_seed(42)  # for reproducibility
@@ -62,12 +63,12 @@ def main():
     state.sync()  # Mandatory to avoid rollbacks with widgets, must be called at the end of your app
 
 
-def load_page(state: st.session_state):
+def load_page(state: _SessionState):
     disclaimer_short = """
     __Disclaimer__: 
     """
     disclaimer_long = """
-    __Description__:
+    __Description__: This part is under development
 
     """
     st.markdown(disclaimer_short)
@@ -85,7 +86,7 @@ def load_page(state: st.session_state):
     )
 
     state.slider = st.slider(
-        "Max story length (add more words for better results):",
+        "Output length (add more words for better results):",
         50,
         1000,
         state.slider,
@@ -108,7 +109,7 @@ def load_page(state: st.session_state):
             pass
 
     st.markdown(
-        '<h2 style="font-family:Courier;text-align:center;">Your Story</h2>',
+        '<h2 style="text-align:center;">Your results appear here</h2>',
         unsafe_allow_html=True,
     )
 
