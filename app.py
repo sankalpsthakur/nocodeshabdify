@@ -49,7 +49,7 @@ def shabdify_suggest(text: str) -> str:
 
 def main():
     state = get_state()
-    st.set_page_config(page_title="Story Generator", page_icon="🛸")
+    st.set_page_config(page_title="Mail Assistant", page_icon="📧")
 
     # set_seed(42)  # for reproducibility
 
