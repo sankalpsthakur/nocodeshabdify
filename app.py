@@ -3,7 +3,6 @@
 #!pip install ipykernel
 #!pip install -q streamlit
 #pip install openai
-API_KEY= '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'
 
 #!wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 #!unzip ngrok-stable-linux-amd64.zip
@@ -11,6 +10,8 @@ API_KEY= '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'
 
 #!curl -s http://localhost:4040/api/tunnels | python3 -c \
 #st.session_state
+
+
 
 import urllib
 from random import randint
@@ -25,9 +26,12 @@ from SessionState import _SessionState, _get_session, _get_state
 import logging
 import openai as openai
 
+API_KEY = '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'
+
 
 def shabdifyTextGeneratorUsingAda(textstr, noOfWords=5):
-    openai.api_key=API_KEY
+
+    openai.api_key= data['API_KEY']
     response = openai.Completion.create(
       engine="ada",
       prompt=textstr,
@@ -42,8 +46,8 @@ def shabdifyTextGeneratorUsingAda(textstr, noOfWords=5):
 
 def shabdify_suggest(text: str) -> str:
     content  = text
-    value = shabdifyTextGeneratorUsingAda(content, 10)
-    print(content);
+    value = shabdifyTextGeneratorUsingAda(content, 5)
+    st.write(value);
     return value;
 
 
@@ -87,13 +91,13 @@ def load_page(state: _SessionState):
 
     state.slider = st.slider(
         "Output length (add more words for better results):",
-        50,
-        1000,
+        5,
+        500,
         state.slider,
     )
 
-    if len(state.input) + state.slider > 5000:
-        st.warning("Your output cannot be longer than 5000 words")
+    if len(state.input) + state.slider > 500:
+        st.warning("Your output cannot be longer than 500 words")
         st.stop()
 
     button_generate = st.button("Generate Content")
@@ -102,6 +106,7 @@ def load_page(state: _SessionState):
     if button_generate:
         try:
             output_text = shabdify_suggest(state.input)
+            
             state.input = st.text_area(
                 "Start your story:", output_text or "", height=50
             )
