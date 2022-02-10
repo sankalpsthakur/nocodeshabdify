@@ -83,14 +83,14 @@ def load_page(state: _SessionState):
     st.title("Shabdify")
 
     state.input = st.text_area(
-        "Content:",
+        "Content (add more words for better results):",
         state.input,
         height=200,
         max_chars=5000,
     )
 
     state.slider = st.slider(
-        "Output length (add more words for better results):",
+        "Output length:",
         5,
         500,
         state.slider,
@@ -105,7 +105,7 @@ def load_page(state: _SessionState):
 
     if button_generate:
         try:
-            output_text = shabdifyTextGeneratorUsingAda(state.input)
+            output_text = shabdifyTextGeneratorUsingAda(state.input, state.slider)
             
             state.input = st.text_area(
                 "Start your story:", output_text or "", height=50
