@@ -44,11 +44,11 @@ def shabdifyTextGeneratorUsingAda(textstr, noOfWords=5):
 
     return response.choices[0].text;
 
-def shabdify_suggest(text: str) -> str:
-    content  = text
-    value = shabdifyTextGeneratorUsingAda(content, 5)
-    st.write(value);
-    return value;
+#def shabdify_suggest(text: str) -> str:
+ #   content  = text
+  #  value = shabdifyTextGeneratorUsingAda(content, 5)
+   # st.write(value);
+    #return value;
 
 
 
@@ -105,7 +105,7 @@ def load_page(state: _SessionState):
 
     if button_generate:
         try:
-            output_text = shabdify_suggest(state.input)
+            output_text = shabdifyTextGeneratorUsingAda(state.input)
             
             state.input = st.text_area(
                 "Start your story:", output_text or "", height=50
